@@ -1,41 +1,89 @@
 import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import { Link } from 'gatsby';
+import styled, { css, ThemeProvider } from 'styled-components';
 import { useSpring, animated } from '@react-spring/web';
 import useBoolean from './useBoolean';
 import { desktop } from './rwd';
+import theme from './theme';
 
 import './normalize.css';
 
 export const Context = createContext();
+
+const NavLink = styled(Link).attrs({
+  activeClassName: 'active'
+})`
+  display: block;
+`;
+
+const Nav = styled.nav`
+  padding: 80px 20px 20px 20px;
+  height: 100vh;
+  position: fixed;
+  width: 60vw;
+  background-color: #666;
+  color: white;
+  transition: transform 0.2s;
+  transform: translateX(${props => (props.menuOpened ? 0 : '-60vw')});
+  font-size: 14px;
+  z-index: ${props => props.theme.zIndex.nav};
+
+  ${desktop} {
+    transform: translateX(${props => (props.menuOpened ? 0 : '-420px')});
+    width: 420px;
+    main {
+      margin-left: 420px;
+    }
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  address {
+    font-style: normal;
+  }
+
+  ul {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    padding-bottom: 10px;
+    margin: 10px 0 0 0;
+    list-style-type: none;
+  }
+
+  li {
+    margin: 0;
+  }
+`;
 
 const Wrapper = styled.div`
   display: flex;
   transition: transform 0.2s;
   width: calc(160vw);
   transform: translateX(${props => (props.menuOpened ? 0 : '-60vw')});
-
-  nav {
-    height: 100vh;
-    width: 60vw;
-  }
+  font-size: 14px;
 
   main {
     flex: 1;
+    margin-left: 60vw;
   }
 
   ${desktop} {
     width: calc(100vw + 420px);
     transform: translateX(${props => (props.menuOpened ? 0 : '-420px')});
 
-    nav {
-      width: 420px;
+    main {
+      margin-left: 420px;
     }
   }
 `;
 
 const MenuButton = styled.button`
-  background-color: white;
+  background-color: ${props => (props.menuOpened ? '#666' : 'white')};
   border: none;
   cursor: pointer;
   display: flex;
@@ -43,9 +91,18 @@ const MenuButton = styled.button`
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 100;
+  z-index: ${props => props.theme.zIndex.fab};
   width: 70px;
   height: 70px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #666;
+
+    .line {
+      stroke: white;
+    }
+  }
 
   svg {
     transform: scale(0.6) translate(0, -30%);
@@ -53,7 +110,7 @@ const MenuButton = styled.button`
 
   .line {
     fill: none;
-    stroke: black;
+    stroke: ${props => (props.menuOpened ? 'white' : 'black')};
     stroke-width: 6;
     transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
       stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -100,7 +157,7 @@ export default function Layout({ children }) {
   });
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <MenuButton menuOpened={menuOpened} onClick={setMenuOpened.toggle}>
         <svg width={100} height={100} viewBox='0 0 100 100'>
           <path
@@ -114,70 +171,41 @@ export default function Layout({ children }) {
           />
         </svg>
       </MenuButton>
+      <Nav menuOpened={menuOpened}>
+        <h2>
+          騰森實業股份有限公司
+          <br />
+          Tessen Enterprise Co. Ltd.
+        </h2>
+        <address>
+          40044 台中市中區大誠街1號2F
+          <br />
+          Taichung City 40044, ROC (Taiwan) 2F., No.1, Dacheng St., Central Dist.
+          <br />
+          C：(+886)968-872768
+          <br />
+          T：(+886)4222-37728
+          <br />
+          F：(+886)4222-51240
+          <br />
+          V：53404001
+          <br />
+          E：richardtseng7@gmail.com
+          <br />曾 彥 清 Yen-Ching Tseng
+        </address>
+        <ul>
+          <li>
+            <NavLink to='/'>關於我們</NavLink>
+          </li>
+          <li>
+            <NavLink to='/products'>產品介紹</NavLink>
+          </li>
+          <li>
+            <NavLink to='/quality-certification'>品質認證</NavLink>
+          </li>
+        </ul>
+      </Nav>
       <Wrapper menuOpened={menuOpened}>
-        <nav>
-          <div className='contact'>
-            <h2>
-              騰森實業股份有限公司
-              <br />
-              Tessen Enterprise Co. Ltd.
-            </h2>
-            <address>
-              40044 台中市中區大誠街1號2F
-              <br />
-              Taichung City 40044, ROC (Taiwan) 2F., No.1, Dacheng St., Central Dist.
-              <br />
-              C：(+886)968-872768
-              <br />
-              T：(+886)4222-37728
-              <br />
-              F：(+886)4222-51240
-              <br />
-              V：53404001
-              <br />
-              E：richardtseng7@gmail.com
-              <br />曾 彥 清 Yen-Ching Tseng
-            </address>
-          </div>
-          <ul>
-            <li>
-              關於我們
-              <ul>
-                <li>有機特級冷壓初榨橄欖油</li>
-                <li>原產地保證特級冷壓初榨橄欖油</li>
-                <li>早熟成特級冷壓初榨橄欖油</li>
-                <li>傳統特級冷壓初榨橄欖油</li>
-              </ul>
-              <ul>
-                <li>鹽之花</li>
-              </ul>
-            </li>
-            <li>
-              產品介紹
-              <ul>
-                <li>D.I.O.歐盟有機食品檢驗認證</li>
-                <li>P.D.O認證「原產地名稱保護」</li>
-              </ul>
-              <ul>
-                <li>有機特級冷壓初榨橄欖油</li>
-                <li>原產地保證特級冷壓初榨橄欖油</li>
-                <li>早熟成特級冷壓初榨橄欖油</li>
-                <li>傳統特級冷壓初榨橄欖油</li>
-                <li>鹽之花</li>
-                <li>玻璃瓶檢測</li>
-                <li>瓶蓋檢測</li>
-                <li>錫桶檢測</li>
-                <li>希臘卡米尼橄欖油莊園</li>
-                <li>騰森實業股份有限公司</li>
-              </ul>
-              <ul>
-                <li>希臘卡米尼橄欖油莊園</li>
-                <li>騰森實業股份有限公司</li>
-              </ul>
-            </li>
-            <li>品質認證</li>
-          </ul>
-        </nav>
         <animated.main
           style={{
             filter: brightness.to(b => `brightness(${b})`)
@@ -186,7 +214,7 @@ export default function Layout({ children }) {
           <Context.Provider value={{ menuOpened }}>{children}</Context.Provider>
         </animated.main>
       </Wrapper>
-    </>
+    </ThemeProvider>
   );
 }
 
