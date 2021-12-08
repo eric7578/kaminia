@@ -23,9 +23,11 @@ const indexBackgroundQuery = graphql`
 `;
 
 const CarouselWrapper = styled.div`
-  position: relative;
-  width: 100vw;
-  height: calc(100vh + 70px);
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
 `;
 
 const Background = animated(styled.div`
@@ -39,12 +41,11 @@ const Background = animated(styled.div`
 `);
 
 const Article = styled.article`
-  position: absolute;
-  right: 0;
-  top: 100vh;
-  padding: 30px;
+  position: relative;
+  top: calc(100vh - 70px);
+  padding: 20px;
+  padding-right: 8px;
   background: #fff;
-  width: calc(100vw - 70px);
 
   h3 {
     letter-spacing: 5px;
@@ -53,21 +54,22 @@ const Article = styled.article`
   }
 
   section {
-    padding: 10px;
+    margin-bottom: 10px;
   }
 
   ${desktop} {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 
     section {
-      width: 50%;
+      width: 48%;
     }
   }
 `;
 
 const TitleBlock = styled.div`
-  padding-right: 45px;
+  padding-right: 5px;
   padding-top: 10px;
   margin: 0;
   min-width: 200px;

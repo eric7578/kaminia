@@ -2,47 +2,74 @@ import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import styled, { css, ThemeProvider } from 'styled-components';
-import { useSpring, animated } from '@react-spring/web';
 import useBoolean from './useBoolean';
-import { desktop } from './rwd';
 import theme from './theme';
 
 import './normalize.css';
 
 export const Context = createContext();
 
+const MENU_BUTTON_SIZE = 50;
+
 const NavLink = styled(Link).attrs({
   activeClassName: 'active'
 })`
   display: block;
+  padding: 4px 0 4px 4px;
+  position: relative;
+
+  &.active {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 1px;
+      top: 0;
+      bottom: 0;
+      left: -35px;
+      margin: auto;
+      background-color: #ccc;
+    }
+  }
 `;
 
 const Nav = styled.nav`
-  padding: 80px 20px 20px 20px;
   height: 100vh;
   position: fixed;
+  top: 0;
   width: 60vw;
-  background-color: #666;
+  background-color: #ccc;
   color: white;
-  transition: transform 0.2s;
+  transition: transform 300ms;
   transform: translateX(${props => (props.menuOpened ? 0 : '-60vw')});
   font-size: 14px;
   z-index: ${props => props.theme.zIndex.nav};
 
-  ${desktop} {
-    transform: translateX(${props => (props.menuOpened ? 0 : '-420px')});
-    width: 420px;
-    main {
-      margin-left: 420px;
-    }
+  .nav-inner {
+    padding: 80px 20px 20px 20px;
+    background-color: #666;
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    transition: left 500ms;
+    left: ${props => (props.menuOpened ? 0 : -100)}%;
+    overflow: hidden;
+    width: 100%;
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 14px;
+    padding-left: 4px;
+    line-height: 30px;
   }
 
   address {
-    font-style: normal;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    padding: 20px;
+    left: 0;
   }
 
   ul {
@@ -54,32 +81,14 @@ const Nav = styled.nav`
     margin: 10px 0 0 0;
     list-style-type: none;
   }
-
-  li {
-    margin: 0;
-  }
 `;
 
-const Wrapper = styled.div`
-  display: flex;
+const Main = styled.main`
   transition: transform 0.2s;
-  width: calc(160vw);
-  transform: translateX(${props => (props.menuOpened ? 0 : '-60vw')});
+  transform: translateX(${props => (props.menuOpened ? '50vw' : 0)});
   font-size: 14px;
-
-  main {
-    flex: 1;
-    margin-left: 60vw;
-  }
-
-  ${desktop} {
-    width: calc(100vw + 420px);
-    transform: translateX(${props => (props.menuOpened ? 0 : '-420px')});
-
-    main {
-      margin-left: 420px;
-    }
-  }
+  padding-left: 70px;
+  position: absolute;
 `;
 
 const MenuButton = styled.button`
@@ -87,13 +96,15 @@ const MenuButton = styled.button`
   border: none;
   cursor: pointer;
   display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
   position: fixed;
   left: 0;
   top: 0;
   z-index: ${props => props.theme.zIndex.fab};
-  width: 70px;
-  height: 70px;
+  width: ${MENU_BUTTON_SIZE}px;
+  height: ${MENU_BUTTON_SIZE}px;
   transition: 0.3s;
 
   &:hover {
@@ -105,7 +116,11 @@ const MenuButton = styled.button`
   }
 
   svg {
-    transform: scale(0.6) translate(0, -30%);
+    position: absolute;
+    transform-origin: center center;
+    transform: scale(0.8);
+    width: 70%;
+    height: 70%;
   }
 
   .line {
@@ -152,9 +167,6 @@ const MenuButton = styled.button`
 
 export default function Layout({ children }) {
   const [menuOpened, setMenuOpened] = useBoolean(false);
-  const { brightness } = useSpring({
-    brightness: menuOpened ? 0.3 : 1
-  });
 
   return (
     <ThemeProvider theme={theme}>
@@ -172,48 +184,44 @@ export default function Layout({ children }) {
         </svg>
       </MenuButton>
       <Nav menuOpened={menuOpened}>
-        <h2>
-          騰森實業股份有限公司
-          <br />
-          Tessen Enterprise Co. Ltd.
-        </h2>
-        <address>
-          40044 台中市中區大誠街1號2F
-          <br />
-          Taichung City 40044, ROC (Taiwan) 2F., No.1, Dacheng St., Central Dist.
-          <br />
-          C：(+886)968-872768
-          <br />
-          T：(+886)4222-37728
-          <br />
-          F：(+886)4222-51240
-          <br />
-          V：53404001
-          <br />
-          E：richardtseng7@gmail.com
-          <br />曾 彥 清 Yen-Ching Tseng
-        </address>
-        <ul>
-          <li>
-            <NavLink to='/'>關於我們</NavLink>
-          </li>
-          <li>
-            <NavLink to='/products'>產品介紹</NavLink>
-          </li>
-          <li>
-            <NavLink to='/quality-certification'>品質認證</NavLink>
-          </li>
-        </ul>
+        <div className='nav-inner'>
+          <h2>
+            騰森實業股份有限公司
+            <br />
+            Tessen Enterprise Co. Ltd.
+          </h2>
+          <ul>
+            <li>
+              <NavLink to='/'>關於我們</NavLink>
+            </li>
+            <li>
+              <NavLink to='/products'>產品介紹</NavLink>
+            </li>
+            <li>
+              <NavLink to='/quality-certification'>品質認證</NavLink>
+            </li>
+          </ul>
+          <address>
+            40044 台中市中區大誠街1號2F
+            <br />
+            Taichung City 40044, ROC (Taiwan) 2F., No.1, Dacheng St., Central Dist.
+            <br />
+            C：(+886)968-872768
+            <br />
+            T：(+886)4222-37728
+            <br />
+            F：(+886)4222-51240
+            <br />
+            V：53404001
+            <br />
+            E：richardtseng7@gmail.com
+            <br />曾 彥 清 Yen-Ching Tseng
+          </address>
+        </div>
       </Nav>
-      <Wrapper menuOpened={menuOpened}>
-        <animated.main
-          style={{
-            filter: brightness.to(b => `brightness(${b})`)
-          }}
-        >
-          <Context.Provider value={{ menuOpened }}>{children}</Context.Provider>
-        </animated.main>
-      </Wrapper>
+      <Main menuOpened={menuOpened}>
+        <Context.Provider value={{ menuOpened }}>{children}</Context.Provider>
+      </Main>
     </ThemeProvider>
   );
 }
