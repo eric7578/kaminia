@@ -7,6 +7,7 @@ import { Heading2, Heading3, Emphasize } from '../../components/headings';
 import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 import Lightbox from 'react-image-lightbox';
 import useBoolean from '../../components/useBoolean';
+import { useFadeIn } from '../../components/useImages';
 
 import 'react-image-lightbox/style.css';
 import './lightbox.css';
@@ -22,6 +23,17 @@ const ProductMainImage = styled.div`
 
 const WProduct = styled.article`
   padding: 20px 20px 20px 0;
+
+  p {
+    background: #eaeaea;
+    padding: 10px 20px;
+    margin: 0;
+    font-size: 12px;
+
+    &:last-of-type {
+      margin-bottom: 20px;
+    }
+  }
 `;
 
 const CertIcons = styled.figure`
@@ -58,6 +70,7 @@ const CertIcons = styled.figure`
 const SquareImages = styled.figure`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 
   img {
     border: 1px solid white;
@@ -146,6 +159,10 @@ export default function Product(props) {
   const [nextIndex, prevIndex] = useMemo(() => {
     return [(imageIndex + 1) % report?.images.length, (imageIndex + report?.images.length - 1) % report?.images.length];
   }, [imageIndex, report]);
+  const squares = useMemo(() => {
+    return product.squareImages?.map(img => img.childImageSharp.fluid.src) ?? [];
+  }, [product.squareImages]);
+  const [refSquare, renderSquares] = useFadeIn(squares);
 
   return (
     <WProduct>
@@ -153,6 +170,13 @@ export default function Product(props) {
       <ProductMainImage>
         <GatsbyImage image={getImage(product.heroImage)} alt='' />
       </ProductMainImage>
+      {squares.length > 0 && (
+        <SquareImages ref={refSquare}>
+          {squares.map((img, i) => (
+            <animated.img {...renderSquares(i)} />
+          ))}
+        </SquareImages>
+      )}
       {product.description.map((desc, i) => (
         <p key={i}>{desc}</p>
       ))}
@@ -205,6 +229,13 @@ export const query = graphql`
       heroImage {
         childImageSharp {
           gatsbyImageData
+        }
+      }
+      squareImages {
+        childImageSharp {
+          fluid {
+            src
+          }
         }
       }
       cert {

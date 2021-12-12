@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useEffect } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import styled, { css, ThemeProvider } from 'styled-components';
 import useBoolean from './useBoolean';
@@ -36,11 +36,11 @@ const Nav = styled.nav`
   height: 100vh;
   position: fixed;
   top: 0;
-  width: 60vw;
+  width: 80vw;
   background-color: #ccc;
   color: white;
   transition: transform 300ms;
-  transform: translateX(${props => (props.menuOpened ? 0 : '-60vw')});
+  transform: translateX(${props => (props.menuOpened ? 0 : '-80vw')});
   font-size: 14px;
   z-index: ${props => props.theme.zIndex.nav};
 
@@ -55,6 +55,21 @@ const Nav = styled.nav`
     left: ${props => (props.menuOpened ? 0 : -100)}%;
     overflow: hidden;
     width: 100%;
+  }
+
+  .nav-text {
+    padding: 4px 0 4px 4px;
+    opacity: 0.5;
+  }
+
+  .nav-products {
+    font-size: 14px;
+    letter-spacing: normal;
+
+    li {
+      margin: 0;
+      text-indent: 20px;
+    }
   }
 
   h2 {
@@ -165,7 +180,7 @@ const MenuButton = styled.button`
   }
 `;
 
-export default function Layout({ children }) {
+export default function Layout({ location, children }) {
   const [menuOpened, setMenuOpened] = useBoolean(false);
   const data = useStaticQuery(graphql`
     query {
@@ -177,6 +192,10 @@ export default function Layout({ children }) {
       }
     }
   `);
+
+  useEffect(() => {
+    setMenuOpened.off();
+  }, [location.pathname]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -204,13 +223,15 @@ export default function Layout({ children }) {
             <li>
               <NavLink to='/'>關於我們</NavLink>
             </li>
-            {data.allProduct.nodes.map((node, i) => (
-              <li key={i}>
-                <NavLink to={node.url}>{node.zhName}</NavLink>
-              </li>
-            ))}
             <li>
-              <NavLink to='/quality-certification'>品質認證</NavLink>
+              <span className='nav-text'>產品介紹</span>
+              <ul className='nav-products'>
+                {data.allProduct.nodes.map((node, i) => (
+                  <li key={i}>
+                    <NavLink to={node.url}>{node.zhName}</NavLink>
+                  </li>
+                ))}
+              </ul>
             </li>
           </ul>
           <address>

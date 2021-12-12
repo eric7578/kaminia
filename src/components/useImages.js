@@ -12,7 +12,7 @@ export function useFadeIn(images) {
     to: {
       opacity: 1
     },
-    delay: i * 100 + 700
+    delay: i * 100 + 300
   }));
 
   const renderer = useCallback(
