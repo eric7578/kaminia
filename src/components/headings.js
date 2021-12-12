@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useInViewport } from 'react-in-viewport';
 import styled, { keyframes } from 'styled-components';
+import clsx from 'clsx';
 import useBoolean from './useBoolean';
 
 const heading1TextCliip = keyframes`
@@ -105,7 +106,7 @@ const WHeading2 = styled.div`
   }
 `;
 
-export function Heading2({ children, secondary }) {
+export function Heading2({ className, children, secondary }) {
   const ref = useRef();
   const { inViewport } = useInViewport(ref);
   const [active, setActive] = useBoolean(inViewport);
@@ -122,12 +123,54 @@ export function Heading2({ children, secondary }) {
   }, [inViewport, active]);
 
   return (
-    <WHeading2 ref={ref} className={active ? 'active' : null}>
+    <WHeading2 ref={ref} className={clsx(className, { active })}>
       <div className='title-inner'>
         <h2 className='primary'>{children}</h2>
-        <h3 className='secondary'>{secondary}</h3>
+        {secondary && <h3 className='secondary'>{secondary}</h3>}
       </div>
     </WHeading2>
+  );
+}
+
+const WHeading3 = styled.div`
+  position: relative;
+  display: flex;
+  align-items: baseline;
+
+  &::after {
+    background-color: #000;
+    display: block;
+    content: '';
+    height: 1px;
+    width: 1px;
+    margin-left: 10px;
+    transition: transform 9000ms;
+    transform-origin: left center;
+    transform: scaleX(0);
+  }
+
+  &.active {
+    &::after {
+      transform: scaleX(2000);
+    }
+  }
+
+  h4 {
+    font-size: 20px;
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 15px;
+  }
+`;
+
+export function Heading3({ children }) {
+  const ref = useRef();
+  const { inViewport } = useInViewport(ref);
+
+  return (
+    <WHeading3 ref={ref} className={clsx({ active: inViewport })}>
+      <h4>{children}</h4>
+    </WHeading3>
   );
 }
 
@@ -147,9 +190,8 @@ const WEmphasize = styled.span`
     width: 0%;
   }
 
-  b {
-    padding: 0 2px;
-    box-shadow: 0 1px 0 #000;
+  a {
+    padding: 0;
   }
 
   &.active {
@@ -157,20 +199,20 @@ const WEmphasize = styled.span`
       animation: ${emphasizeBlock} 800ms cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
     }
 
-    b {
+    a {
       opacity: 0;
       animation: ${fadeIn} 800ms 500ms forwards;
     }
   }
 `;
 
-export function Emphasize({ children }) {
+export function Emphasize({ children, ...rest }) {
   const ref = useRef();
   const { inViewport } = useInViewport(ref);
 
   return (
     <WEmphasize ref={ref} className={inViewport ? 'active' : null}>
-      <b>{children}</b>
+      <a {...rest}>{children}</a>
     </WEmphasize>
   );
 }

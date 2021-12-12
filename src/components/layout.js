@@ -1,6 +1,5 @@
 import React, { createContext } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
 import styled, { css, ThemeProvider } from 'styled-components';
 import useBoolean from './useBoolean';
 import theme from './theme';
@@ -89,6 +88,7 @@ const Main = styled.main`
   font-size: 14px;
   padding-left: 70px;
   position: absolute;
+  overflow: hidden;
 `;
 
 const MenuButton = styled.button`
@@ -167,6 +167,16 @@ const MenuButton = styled.button`
 
 export default function Layout({ children }) {
   const [menuOpened, setMenuOpened] = useBoolean(false);
+  const data = useStaticQuery(graphql`
+    query {
+      allProduct {
+        nodes {
+          zhName
+          url: gatsbyPath(filePath: "/products/{Product.name}")
+        }
+      }
+    }
+  `);
 
   return (
     <ThemeProvider theme={theme}>
@@ -194,9 +204,11 @@ export default function Layout({ children }) {
             <li>
               <NavLink to='/'>關於我們</NavLink>
             </li>
-            <li>
-              <NavLink to='/products'>產品介紹</NavLink>
-            </li>
+            {data.allProduct.nodes.map((node, i) => (
+              <li key={i}>
+                <NavLink to={node.url}>{node.zhName}</NavLink>
+              </li>
+            ))}
             <li>
               <NavLink to='/quality-certification'>品質認證</NavLink>
             </li>
@@ -225,7 +237,3 @@ export default function Layout({ children }) {
     </ThemeProvider>
   );
 }
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired
-};

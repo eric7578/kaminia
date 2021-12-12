@@ -1,0 +1,45 @@
+.ril__navButtons {
+  width: 20px;
+  height: 20px;
+  padding: 20px 20px;
+}
+
+.ril__navButtonNext,
+.ril__navButtonPrev {
+  background-size: 10px;
+}
+
+.ril-toolbar {
+  display: block;
+  text-align: right;
+  background: none;
+}
+
+.ril-toolbar-left {
+  padding: 0;
+  position: relative;
+}
+
+@keyframes expand {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 80px;
+  }
+}
+
+.ril-toolbar-left::after {
+  content: '';
+  background-color: #fafafa;
+  display: block;
+  height: 1px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  animation: expand 350ms 300ms forwards;
+}
+
+.ril-toolbar-right {
+  padding: 0;
+}

@@ -7,6 +7,26 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-transformer-yaml`,
+      options: {
+        typeName({ node }) {
+          const name = node.sourceInstanceName;
+          console.log(node.sourceInstanceName);
+          if (name === `products`) {
+            return `Product`;
+          }
+          return name;
+        }
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/products`,
+        name: `products`
+      }
+    },
+    {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/layout`)
@@ -20,13 +40,6 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`
-      }
-    },
-    `gatsby-transformer-yaml`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `./src/data/`
       }
     },
     `gatsby-transformer-sharp`,
@@ -45,8 +58,5 @@ module.exports = {
         icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
       }
     }
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ]
 };

@@ -1,0 +1,253 @@
+- name: Organic Extra Virgin Olive Oil
+  zhName: 有機特級冷壓初榨橄欖油
+  description:
+    - 產自斯巴達的泰格脫山區(Taitegos)，泰格脫山是希臘的第三高山，當地種植的安辛諾尼亞橄欖樹皆有數百年高齡，果實大小中等呈紫蘿藍色，成熟速度最慢，收穫季節在十二月底一月初，具有清新果香和和大量的多酚。橄欖的收成純以手工，生產製程完全合乎歐盟有機食品認證過程，不論生產和收穫過程不使用任何殺蟲劑、除草劑或化學肥料。
+    - 安辛諾尼亞在手工收穫集中後，必須送至當地農會指定的有機橄欖油冷壓機具，製成後放入鋼桶靜待香氣風味成熟。有機橄欖油不同於傳統橄欖油之處就在於每一步驟都由化學檢測嚴密監控，而不是老師傅的經驗傳承，必須經過歐盟有機認證的嚴密管理，在現代化的機具監測下及最嚴格的生產標準與追蹤系統。鮮甜、雅緻、清澈的口感是最高品質有機橄欖油的保證。
+  heroImage: ./Organic Extra Virgin Olive Oil/p1.png
+  cert:
+    - ./certs/agr.png
+    - ./certs/dio.png
+    - ./certs/fda.png
+    - ./certs/sgs.png
+    - ./certs/fos.png
+    - ./certs/tuv.png
+    - ./certs/csi.png
+  orgs:
+    - name: 食品藥物管理署檢測報告
+      reports:
+        - name: FDA進口檢驗合格報告
+          images:
+            - ./Organic Extra Virgin Olive Oil/FDA.jpg
+        - name: 農糧署有機進口證明
+          images:
+            - ./Organic Extra Virgin Olive Oil/import_cert.jpg
+    - name: 歐盟FOFSA檢測報告
+      reports:
+        - name: FOSFA 有機檢驗報告
+          images:
+            - ./Organic Extra Virgin Olive Oil/FOSFA/FOSFA_Organic-1.jpg
+            - ./Organic Extra Virgin Olive Oil/FOSFA/FOSFA_Organic-2.jpg
+    - name: 歐盟Sky-Lab檢測報告
+      reports:
+        - name: 有機橄欖油檢驗報告
+          images:
+            - ./Organic Extra Virgin Olive Oil/SkyLab/17deg_1.jpg
+            - ./Organic Extra Virgin Olive Oil/SkyLab/17deg_2.jpg
+            - ./Organic Extra Virgin Olive Oil/SkyLab/17deg_3.jpg
+    - name: SGS檢測報告
+      reports:
+        - name: 農藥未檢出報告
+          images:
+            - ./Organic Extra Virgin Olive Oil/SGS/FA_2015_41815-1.jpg
+            - ./Organic Extra Virgin Olive Oil/SGS/FA_2015_41815-2.jpg
+            - ./Organic Extra Virgin Olive Oil/SGS/FA_2015_41815-3.jpg
+            - ./Organic Extra Virgin Olive Oil/SGS/FA_2015_41815-4.jpg
+            - ./Organic Extra Virgin Olive Oil/SGS/FA_2015_41815-5.jpg
+            - ./Organic Extra Virgin Olive Oil/SGS/FA_2015_41815-6.jpg
+        - name: 重金屬未檢出報告
+          images:
+            - ./Organic Extra Virgin Olive Oil/SGS/FA_2015_41816-1.jpg
+            - ./Organic Extra Virgin Olive Oil/SGS/FA_2015_41816-2.jpg
+        - name: 黃麴毒素未檢出報告
+          images:
+            - ./Organic Extra Virgin Olive Oil/SGS/FA_2015_41817-1.jpg
+            - ./Organic Extra Virgin Olive Oil/SGS/FA_2015_41817-2.jpg
+
+- name: PDO Extra Virgin Olive Oil
+  zhName: 原產地保證特級冷壓初榨橄欖油
+  description:
+    - 產自於希臘南端伯羅奔尼薩半島，克羅尼奇 (Koroneiki)橄欖有別於一般橄欖的翠綠色，呈現深棕色或深紫色淚珠形狀，果實小而柔軟是皇家等級的橄欖品種。皇家克羅尼奇橄欖必須以人工採集，石磨成泥後放入棕櫚樹葉編織成的袋子冷榨出清澈的橄欖油。
+    - 9公斤的橄欖才可以榨出1公升的橄欖油，這種古老且傳統的製作方法源自1885年，至今仍是當地最高級橄欖油的製成方式，滋味香醇雅致清澈金黃的橄欖油與新鮮淡雅的芳香是希臘古老的傳統風味。其遠近馳名的橄欖品種只種植在歐盟卡拉馬塔(Kalamata)農業保護區，當地無汙染的天然環境並維持當地微氣候傳統耕作製作方式，歐盟原產地保護認證是世界上最嚴格的產品認證（Protected Designated Origins, PDO）。
+  heroImage: ./PDO Extra Virgin Olive Oil/p2.png
+  cert:
+    - ./certs/pdo.png
+    - ./certs/agr.png
+    - ./certs/dio.png
+    - ./certs/fda.png
+    - ./certs/sgs.png
+    - ./certs/sl-med.png
+    - ./certs/fos.png
+    - ./certs/tuv.png
+    - ./certs/csi.png
+  orgs:
+    - name: 食品藥物管理署檢測報告
+      reports:
+        - name: FDA進口檢驗合格報告
+          images:
+            - ./PDO Extra Virgin Olive Oil/FDA/FDA.jpg
+    - name: PDO生產證照
+      reports:
+        - name: 產地保護區生產證照
+          images:
+            - ./PDO Extra Virgin Olive Oil/cert/Kaminia_PDO.jpg
+    - name: 歐盟FOFSA檢測報告
+      reports:
+        - name: 維生素E及多酚檢測報告
+          images:
+            - ./PDO Extra Virgin Olive Oil/FOSFA/PDO-1.jpg
+            - ./PDO Extra Virgin Olive Oil/FOSFA/PDO-2.jpg
+    - name: 歐盟FOFSA塑化劑檢測
+      reports:
+        - name: 塑化劑未檢出報告
+          images:
+            - ./PDO Extra Virgin Olive Oil/plastic/PDO_Plasticisers_Analysis-1.jpg
+            - ./PDO Extra Virgin Olive Oil/plastic/PDO_Plasticisers_Analysis-2.jpg
+    - name: 歐盟Sky-Lab檢測報告
+      reports:
+        - name: PDO Acidity Analysis I
+          images:
+            - ./PDO Extra Virgin Olive Oil/SkyLab-Med/PDO_Acidity_Analysis_Part_I-1.jpg
+        - name: PDO Acidity Analysis II
+          images:
+            - ./PDO Extra Virgin Olive Oil/SkyLab-Med/PDO_Acidity_Analysis_Part_II-1.jpg
+        - name: PDO Acidity Analysis III
+          images:
+            - ./PDO Extra Virgin Olive Oil/SkyLab-Med/PDO_Acidity_Analysis_Part_III-1.jpg
+    - name: SGS檢測報告
+      reports:
+        - name: 人工添加物及黃麴毒素未檢出報告
+          images:
+            - ./PDO Extra Virgin Olive Oil/SGS/no_artifi/no_artifi_1.jpg
+            - ./PDO Extra Virgin Olive Oil/SGS/no_artifi/no_artifi_2.jpg
+        - name: 農藥未檢出報告
+          images:
+            - ./PDO Extra Virgin Olive Oil/SGS/no_chem/no_chem-1.jpg
+            - ./PDO Extra Virgin Olive Oil/SGS/no_chem/no_chem-2.jpg
+            - ./PDO Extra Virgin Olive Oil/SGS/no_chem/no_chem-3.jpg
+            - ./PDO Extra Virgin Olive Oil/SGS/no_chem/no_chem-4.jpg
+            - ./PDO Extra Virgin Olive Oil/SGS/no_chem/no_chem-5.jpg
+            - ./PDO Extra Virgin Olive Oil/SGS/no_chem/no_chem-6.jpg
+
+- name: Unrippened Extra Virgin Olive Oil
+  zhName: 早熟成特級冷壓初榨橄欖油
+  description:
+    - 產自於伯羅奔尼撒半島最南端的瑪尼(Mani) 山區，本區的老橄欖樹生長在夏季燥熱缺水且冬季酷寒下雪的環境，粗放野耕的麻尼亞塔奇(Maniataki)橄欖是希臘稀少特有的品種。果實圓而結實，成熟時便會被山上的野鳥啄光，因此只能在果實還未成熟時手工摘採，斯巴達人堅信其果實具有更強韌的生命力。
+    - 當地以強悍的民風、陡峭狹窄的山道而著名，海風為橄欖帶來了豐富的營養，特殊的風土條件造就卡米尼使用未熟成的橄欖榨油的傳統。手採的青澀橄欖以傳統低溫的方式冷榨出清澈翠綠色的橄欖油，酸價僅有0.2，富含維生素E及抗氧化多酚。希臘油農通常都會把這寶貴的橄欖油留給自己使用，渾厚的果實清香與獨特辛澀的口感榮獲「2013洛杉磯世界初榨橄欖油大賽金牌」。
+  heroImage: ./Unrippened Extra Virgin Olive Oil/p3.png
+  cert:
+    - ./certs/fda.png
+    - ./certs/sgs.png
+    - ./certs/sl-med.png
+    - ./certs/fosfa.png
+  orgs:
+    - name: 食品藥物管理署檢測報告
+      reports:
+        - name: FDA進口檢驗合格報告
+          images:
+            - ./Unrippened Extra Virgin Olive Oil/FDA/FDA103331-1.jpg
+            - ./Unrippened Extra Virgin Olive Oil/FDA/FDA103331-2.jpg
+    - name: 歐盟FOFSA檢測報告
+      reports:
+        - name: 維生素E及多酚檢測報告
+          images:
+            - ./Unrippened Extra Virgin Olive Oil/FOSFA/unripend-1.jpg
+            - ./Unrippened Extra Virgin Olive Oil/FOSFA/unripend-2.jpg
+    - name: 歐盟FOFSA塑化劑檢測
+      reports:
+        - name: 塑化劑未檢出報告
+          images:
+            - ./Unrippened Extra Virgin Olive Oil/plastic/UNA-1.jpg
+            - ./Unrippened Extra Virgin Olive Oil/plastic/UNA-2.jpg
+    - name: 歐盟Sky-Lab檢測報告
+      reports:
+        - name: Unrippened Acidity Analysis I
+          images:
+            - ./Unrippened Extra Virgin Olive Oil/SkyLab-Med/UAA_I.jpg
+        - name: Unrippened Acidity Analysis II
+          images:
+            - ./Unrippened Extra Virgin Olive Oil/SkyLab-Med/UAA_II.jpg
+        - name: Unrippened Acidity Analysis III
+          images:
+            - ./Unrippened Extra Virgin Olive Oil/SkyLab-Med/UAA_III.jpg
+    - name: SGS檢驗報告
+      reports:
+        - name: 人工添加物及黃麴毒素未檢出報告
+          images:
+            - ./Unrippened Extra Virgin Olive Oil/SGS/arti-1.jpg
+            - ./Unrippened Extra Virgin Olive Oil/SGS/arti-2.jpg
+        - name: 農藥未檢出報告
+          images:
+            - ./Unrippened Extra Virgin Olive Oil/SGS/chem-1.jpg
+            - ./Unrippened Extra Virgin Olive Oil/SGS/chem-2.jpg
+            - ./Unrippened Extra Virgin Olive Oil/SGS/chem-3.jpg
+            - ./Unrippened Extra Virgin Olive Oil/SGS/chem-4.jpg
+            - ./Unrippened Extra Virgin Olive Oil/SGS/chem-5.jpg
+            - ./Unrippened Extra Virgin Olive Oil/SGS/chem-6.jpg
+    - name: 2013洛杉磯世界初榨橄欖油大賽金
+      reports:
+        - name: 金牌獎證照
+          images:
+            - ./Unrippened Extra Virgin Olive Oil/LA2013/AWARDArogos.jpg
+
+- name: Extra Virgin Olive Oil
+  zhName: 傳統特級冷壓初榨橄欖油
+  description:
+    - 產自希臘南部拉克尼亞區，來自泰戈特山脈滿山數百年高齡原生橄欖樹，果實圓大含油量豐富，成熟速度緩慢。「Extra Virgin Olive Oil」特級冷壓初榨橄欖油裡最高等級，香味與營養成份最豐富的品質。歐盟嚴格管控收穫與製程的每一步驟，採摘24小時內以傳統冷壓(Cold Press）方式壓榨，完全不能添加與使用任何化學成分與方式，天然的冷壓初榨橄欖油會自然散發淡淡水果香氣，略帶苦味及刺激感，酸價低於0.8、發煙點為攝氏190~210度，適合各種食材的烹調。
+  heroImage: ./Extra Virgin Olive Oil/p4.png
+  cert:
+    - ./certs/fda.png
+    - ./certs/sgs.png
+    - ./certs/sl-med.png
+    - ./certs/fosfa.png
+    - ./certs/tuv.png
+    - ./certs/iaf.png
+  orgs:
+    - name: 食品藥物管理署檢測報告
+      reports:
+        - name: FDA進口檢驗合格報告
+          images:
+            - ./Extra Virgin Olive Oil/FDA/FDA103331-1.jpg
+    - name: 歐盟FOFSA塑化劑檢測報告
+      reports:
+        - name: 塑化劑未檢出報告
+          images:
+            - ./Extra Virgin Olive Oil/plastic/EVOO-1.jpg
+            - ./Extra Virgin Olive Oil/plastic/EVOO-2.jpg
+    - name: 歐盟Sky-Lab檢測報告
+      reports:
+        - name: SkyLab-Med檢驗報告
+          images:
+            - ./Extra Virgin Olive Oil/SkyLab/SkyLab-1.jpg
+            - ./Extra Virgin Olive Oil/SkyLab/SkyLab-2.jpg
+            - ./Extra Virgin Olive Oil/SkyLab/SkyLab-3.jpg
+    - name: SGS檢測報告
+      reports:
+        - name: 酸價檢測報告
+          images:
+            - ./Extra Virgin Olive Oil/SkyLab/SGS/BA_2014_B1253A-19-1.jpg
+            - ./Extra Virgin Olive Oil/SkyLab/SGS/BA_2014_B1253A-19-2.jpg
+        - name: 過氧化價檢測報告
+          images:
+            - ./Extra Virgin Olive Oil/SkyLab/SGS/BA_2014_B1253A-20-1.jpg.jpg
+            - ./Extra Virgin Olive Oil/SkyLab/SGS/BA_2014_B1253A-20-2.jpg
+        - name: 防腐劑未檢出報告
+          images:
+            - ./Extra Virgin Olive Oil/SkyLab/SGS/BA_2014_B1253A-04-1.jpg
+            - ./Extra Virgin Olive Oil/SkyLab/SGS/BA_2014_B1253A-04-2.jpg
+        - name: 苯并芘未檢出報告
+          images:
+            - ./Extra Virgin Olive Oil/SkyLab/SGS/FA_2014_B0316A-1.jpg
+            - ./Extra Virgin Olive Oil/SkyLab/SGS/FA_2014_B0316A-2.jpg
+        - name: 芥酸未檢出報告
+          images:
+            - ./Extra Virgin Olive Oil/SkyLab/SGS/BA_2014_B1253A-14-1.jpg
+            - ./Extra Virgin Olive Oil/SkyLab/SGS/BA_2014_B1253A-14-2.jpg
+
+- name: Fleur de sel
+  zhName: 鹽之花
+  description:
+    - 鹽之花(法文：Fleur de Sel；英文：Flower of Salt)是手工採集的海鹽。鹽農必須非常小心地用木鋤輕輕在天然鹽鹵表面採集，如果動作不純熟，會把表面的海鹽拌入鹽田底層，與一般的海鹽混合而產生浪費。因為這項採集過程極度要求高超的技術與耗費人力，且世界上只有法國、西班牙、葡萄牙和希臘可以生產鹽之花，所以向來珍貴。卡米尼亞傳統希臘鹽之花，產於伯羅奔尼撒半島的拉克尼亞地區，千年來採集鹽之花的方式都沒有改變，堅持手工，使用木製工具，在夏日的十二點到四點最高溫時採集，地中海強烈的日照和傳統工藝保存了鹽之花的原始風貌，百分之百取自愛琴海水，創造出卓越的品質。在古代希臘，鹽之花一向由少女採集，這寫是希臘少女做為奉獻給她們守護神最崇高的禮物，所以在希臘鹽之花被稱為「處女之鹽」。
+  heroImage: ./Fleur de sel/p5.png
+  squareImages:
+    - ./Fleur de sel/p5-2.jpg
+    - ./Fleur de sel/p5-3.jpg
+    - ./Fleur de sel/p5-4.jpg
+  cert:
+    - ./certs/sl-med.png
+    - ./certs/fosfa.png
+  orgs:
+    - name: 歐盟Sky-Lab檢測報告
+      reports:
+        - name: Arogos salt analysis
+          images:
+            - ./Fleur de sel/ArogosSaltAnalysis-1.jpg
