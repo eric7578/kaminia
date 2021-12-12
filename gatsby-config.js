@@ -11,7 +11,6 @@ module.exports = {
       options: {
         typeName({ node }) {
           const name = node.sourceInstanceName;
-          console.log(node.sourceInstanceName);
           if (name === `products`) {
             return `Product`;
           }
@@ -55,7 +54,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png` // This path is relative to the root of the site.
+        icon: `src/static/favicon.png` // This path is relative to the root of the site.
       }
     }
   ]

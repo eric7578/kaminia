@@ -31,7 +31,7 @@ const heading1InnerLeft = keyframes`
   }
 `;
 
-const fadeIn = keyframes`
+export const fadeIn = keyframes`
   from {
     opacity: 0;
   }
@@ -40,7 +40,7 @@ const fadeIn = keyframes`
   }
 `;
 
-const emphasizeBlock = keyframes`
+export const emphasizeBlock = keyframes`
   0% {
     width: 0%;
     left: 0;

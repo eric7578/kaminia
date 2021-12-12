@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useTransition, animated } from '@react-spring/web';
 import Seo from '../components/seo';
 import useLayoutState from '../components/useLayoutState';
@@ -9,6 +9,8 @@ import dio from '../static/cert-dio.png';
 import eu from '../static/cert-eu.png';
 import pdo from '../static/cert-pdo.png';
 import pdo2 from '../static/cert-pdo2.png';
+import logo from '../static/logo.jpg';
+import { emphasizeBlock, fadeIn } from '../components/headings';
 
 const indexBackgroundQuery = graphql`
   query {
@@ -28,6 +30,41 @@ const CarouselWrapper = styled.div`
   right: 0;
   width: 100%;
   height: 100vh;
+
+  .logo {
+    width: 160px;
+    height: 180px;
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 30%;
+    margin: auto;
+
+    &::before {
+      content: '';
+      display: block;
+      height: 100%;
+      background-image: url(${logo});
+      box-shadow: 0 2px 3px #666;
+      border: 5px solid #d9ac77;
+      opacity: 0;
+      animation: ${fadeIn} 800ms 500ms cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      background-color: #000;
+      width: 0;
+      animation: ${emphasizeBlock} 800ms cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards;
+    }
+  }
 `;
 
 const Background = animated(styled.div`
@@ -156,6 +193,7 @@ export default function IndexPage() {
             />
           );
         })}
+        <div className='logo' />
       </CarouselWrapper>
       <Article>
         <h3>KAMINIA的堅持</h3>
