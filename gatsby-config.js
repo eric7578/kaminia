@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Kaminia-Olive`
+    title: `Kaminia-Olive`,
+    description: ``,
+    author: `Kaminia-Olive`,
+    siteUrl: `http://www.kaminia-olive.com`
   },
   plugins: [
     {
